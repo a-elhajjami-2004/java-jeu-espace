@@ -32,14 +32,19 @@ public class SpaceMainMenu extends FXGLMenu {
 
         Button btnCredits = new Button("Crédits");
         btnCredits.setFont(buttonFont);
-        btnCredits.setOnAction(e -> FXGL.getDialogService().showMessageBox("Développé par Junie"));
+        btnCredits.setOnAction(e ->
+                FXGL.getDialogService().showMessageBox("Développé par Adam, Djelika, Hajar, Abdelilah")
+        );
 
-        menuBox = new VBox(20, title, btnPlay, btnCredits);
+        Button btnExit = new Button("Quitter");
+        btnExit.setFont(buttonFont);
+        btnExit.setOnAction(e -> fireExit());
+
+        menuBox = new VBox(20, title, btnPlay, btnCredits, btnExit);
         menuBox.setAlignment(Pos.CENTER);
         menuBox.setTranslateX(FXGL.getAppWidth() / 2.0 - 100);
         menuBox.setTranslateY(FXGL.getAppHeight() / 2.0 - 100);
 
-        // Level Selection
         Text levelTitle = new Text("Sélection de Niveau");
         levelTitle.setFont(titleFont);
         levelTitle.setFill(Color.WHITE);
@@ -51,9 +56,36 @@ public class SpaceMainMenu extends FXGLMenu {
 
         Button btnLevel1 = new Button("Niveau 1");
         btnLevel1.setFont(buttonFont);
-        btnLevel1.setOnAction(e -> fireNewGame());
+        btnLevel1.setOnAction(e -> {
+            FXGL.set("selectedLevel", 1);
+            fireNewGame();
+        });
+
+        Button btnLevel2 = new Button("Niveau 2");
+        btnLevel2.setFont(buttonFont);
+        btnLevel2.setOnAction(e -> {
+            FXGL.set("selectedLevel", 2);
+            fireNewGame();
+        });
+
+        Button btnLevel3 = new Button("Niveau 3");
+        btnLevel3.setFont(buttonFont);
+        btnLevel3.setOnAction(e -> {
+            FXGL.set("selectedLevel", 3);
+            fireNewGame();
+        });
+
+        Button btnLevel4 = new Button("Niveau 4");
+        btnLevel4.setFont(buttonFont);
+        btnLevel4.setOnAction(e -> {
+            FXGL.set("selectedLevel", 4);
+            fireNewGame();
+        });
 
         grid.add(btnLevel1, 0, 0);
+        grid.add(btnLevel2, 1, 0);
+        grid.add(btnLevel3, 0, 1);
+        grid.add(btnLevel4, 1, 1);
 
         Button btnBack = new Button("Retour");
         btnBack.setFont(buttonFont);
