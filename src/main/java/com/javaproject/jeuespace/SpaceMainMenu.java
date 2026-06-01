@@ -32,14 +32,19 @@ public class SpaceMainMenu extends FXGLMenu {
 
         Button btnCredits = new Button("Crédits");
         btnCredits.setFont(buttonFont);
-        btnCredits.setOnAction(e -> FXGL.getDialogService().showMessageBox("Développé par Junie"));
+        btnCredits.setOnAction(e ->
+                FXGL.getDialogService().showMessageBox("Développé par Adam, Djelika, Hajar, Abdelilah")
+        );
 
-        menuBox = new VBox(20, title, btnPlay, btnCredits);
+        Button btnExit = new Button("Quitter");
+        btnExit.setFont(buttonFont);
+        btnExit.setOnAction(e -> fireExit());
+
+        menuBox = new VBox(20, title, btnPlay, btnCredits, btnExit);
         menuBox.setAlignment(Pos.CENTER);
         menuBox.setTranslateX(FXGL.getAppWidth() / 2.0 - 100);
         menuBox.setTranslateY(FXGL.getAppHeight() / 2.0 - 100);
 
-        // Level Selection
         Text levelTitle = new Text("Sélection de Niveau");
         levelTitle.setFont(titleFont);
         levelTitle.setFill(Color.WHITE);
@@ -52,28 +57,28 @@ public class SpaceMainMenu extends FXGLMenu {
         Button btnLevel1 = new Button("Niveau 1");
         btnLevel1.setFont(buttonFont);
         btnLevel1.setOnAction(e -> {
-            SpaceGameApp.setLevel(1);
+            FXGL.set("selectedLevel", 1);
             fireNewGame();
         });
 
         Button btnLevel2 = new Button("Niveau 2");
         btnLevel2.setFont(buttonFont);
         btnLevel2.setOnAction(e -> {
-            SpaceGameApp.setLevel(2);
+            FXGL.set("selectedLevel", 2);
             fireNewGame();
         });
 
         Button btnLevel3 = new Button("Niveau 3");
         btnLevel3.setFont(buttonFont);
         btnLevel3.setOnAction(e -> {
-            SpaceGameApp.setLevel(3);
+            FXGL.set("selectedLevel", 3);
             fireNewGame();
         });
 
         Button btnLevel4 = new Button("Niveau 4");
         btnLevel4.setFont(buttonFont);
         btnLevel4.setOnAction(e -> {
-            SpaceGameApp.setLevel(4);
+            FXGL.set("selectedLevel", 4);
             fireNewGame();
         });
 
