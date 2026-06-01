@@ -1,9 +1,9 @@
 package com.javaproject.jeuespace;
 
-import javafx.application.Application;
+import com.almasb.fxgl.app.GameApplication;
 
 public class Launcher {
 	public static void main(String[] args) {
-		Application.launch(HelloApplication.class, args);
+		GameApplication.launch(SpaceGameApp.class, args);
 	}
 }

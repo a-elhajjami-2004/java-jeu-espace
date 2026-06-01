@@ -4,6 +4,6 @@ module com.javaproject.jeuespace {
 
 	requires com.almasb.fxgl.all;
 
-	opens com.javaproject.jeuespace to javafx.fxml;
+	opens com.javaproject.jeuespace to javafx.fxml, com.almasb.fxgl.all;
 	exports com.javaproject.jeuespace;
 }
