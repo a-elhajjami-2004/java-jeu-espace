@@ -9,6 +9,7 @@ import javafx.util.Duration;
 public class FighterComponent extends Component {
     private double speed = 150;
     private LocalTimer shootTimer = FXGL.newLocalTimer();
+    private Duration nextShootDelay = Duration.seconds(1 + Math.random() * 2);
 
     @Override
     public void onUpdate(double tpf) {
@@ -18,9 +19,10 @@ public class FighterComponent extends Component {
             entity.setX(FXGL.getAppWidth());
         }
 
-        if (shootTimer.elapsed(Duration.seconds(2))) {
+        if (shootTimer.elapsed(nextShootDelay)) {
             shoot();
             shootTimer.capture();
+            nextShootDelay = Duration.seconds(1 + Math.random() * 2);
         }
     }
 

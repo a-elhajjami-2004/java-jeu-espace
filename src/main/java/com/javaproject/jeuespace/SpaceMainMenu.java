@@ -51,9 +51,36 @@ public class SpaceMainMenu extends FXGLMenu {
 
         Button btnLevel1 = new Button("Niveau 1");
         btnLevel1.setFont(buttonFont);
-        btnLevel1.setOnAction(e -> fireNewGame());
+        btnLevel1.setOnAction(e -> {
+            SpaceGameApp.setLevel(1);
+            fireNewGame();
+        });
+
+        Button btnLevel2 = new Button("Niveau 2");
+        btnLevel2.setFont(buttonFont);
+        btnLevel2.setOnAction(e -> {
+            SpaceGameApp.setLevel(2);
+            fireNewGame();
+        });
+
+        Button btnLevel3 = new Button("Niveau 3");
+        btnLevel3.setFont(buttonFont);
+        btnLevel3.setOnAction(e -> {
+            SpaceGameApp.setLevel(3);
+            fireNewGame();
+        });
+
+        Button btnLevel4 = new Button("Niveau 4");
+        btnLevel4.setFont(buttonFont);
+        btnLevel4.setOnAction(e -> {
+            SpaceGameApp.setLevel(4);
+            fireNewGame();
+        });
 
         grid.add(btnLevel1, 0, 0);
+        grid.add(btnLevel2, 1, 0);
+        grid.add(btnLevel3, 0, 1);
+        grid.add(btnLevel4, 1, 1);
 
         Button btnBack = new Button("Retour");
         btnBack.setFont(buttonFont);

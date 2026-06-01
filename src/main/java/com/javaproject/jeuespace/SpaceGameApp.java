@@ -28,6 +28,12 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class SpaceGameApp extends GameApplication {
 
     private Entity player;
+    private static int selectedLevel = 1;
+    private int level;
+
+    public static void setLevel(int level) {
+        selectedLevel = level;
+    }
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -73,23 +79,27 @@ public class SpaceGameApp extends GameApplication {
     @Override
     protected void initGame() {
         getGameWorld().addEntityFactory(new SpaceEntityFactory());
+        this.level = selectedLevel;
 
         // Fond animé
         initBackground();
         
         player = spawn("player", getAppWidth() / 2.0 - 15, getAppHeight() - 50);
         
-        // Spawn enemies
-        for (int i = 0; i < 5; i++) {
-            spawn("fighter", i * 100 + 50, 50);
-            spawn("bomber", i * 100 + 100, -50);
+        // Spawn enemies based on level
+        switch (level) {
+            case 1: Levels.level1(); break;
+            case 2: Levels.level2(); break;
+            case 3: Levels.level3(); break;
+            case 4: Levels.level4(); break;
+            default: Levels.level1(); break;
         }
     }
 
     private void initBackground() {
         for (int i = 1; i <= 3; i++) {
-            String name = "background/Starry background  - Layer 0" + i + (i == 1 ? " - Void.png" : " - Stars.png");
-            AnimationChannel anim = new AnimationChannel(getAssetLoader().loadTexture(name).getImage(), 9, 640, 360, Duration.seconds(1), 0, 8);
+            String name = String.format("background/layer0%d.png", i);
+            AnimationChannel anim = new AnimationChannel(getAssetLoader().loadTexture(name).getImage(), 9, 640, 360, Duration.seconds(2), 0, 8);
             AnimatedTexture texture = new AnimatedTexture(anim);
             texture.loop();
             

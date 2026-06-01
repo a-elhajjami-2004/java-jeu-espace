@@ -12,7 +12,13 @@ public class HealthComponent extends Component {
         this.maxHp = hp;
     }
 
-    public int getHp() {
+	public HealthComponent(int hp, int maxHp) {
+		this.hp = hp;
+		this.maxHp = maxHp;
+	}
+
+
+	public int getHp() {
         return hp;
     }
 
